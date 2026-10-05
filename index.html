@@ -121,15 +121,16 @@
         </div>
     </body>
     <script>
-        function callParent(url){
-            window.parent.postMessage({'action': 'redirect', 'url': url}, '*');
-        }
-        document.querySelectorAll('.swiper-wrapper a').forEach(function(ele, idx){
-            let href = ele.href;
-            href = href.replace('novelbox://novel/', 'https://www.truyendichvip.live/');
-            ele.addEventListener('click', function(){
-                callParent(href);
-            })
-        });    
+function callParent(url){
+    window.parent.postMessage({'action': 'redirect', 'url': url}, '*');
+}
+document.querySelectorAll('.swiper-wrapper a').forEach(function(ele, idx){
+    let href = ele.href;
+    href = href.replace('novelbox://novel/', 'https://www.truyendichvip.live/');
+    ele.addEventListener('click', function(e){
+      e.preventDefault(); 
+      callParent(href);
+    })
+});
     </script>
 </html>
